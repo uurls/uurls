@@ -1,23 +1,21 @@
-<script type="text/javascript" charset="utf-8" >
-
-window.onload = function () {
+<script crossorigin="anonymous" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" src="//lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+<script>
 var str = location.href
 var num = str.indexOf("?");
-var i = str.substr(num + 1,4);   //5个字符
-var i =decodeURIComponent(i)
-    if (i) {
-        const httpRequest = new XMLHttpRequest();
-        httpRequest.open("GET", "https://5a594e64d2a6a5c0.cdn.jiashule.com/query.php");
-        httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        httpRequest.send("id=" + i);
-        httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-                self.location.href = httpRequest.responseText;
-            }
-        }
-    }else {
-        self.location.href = "https://xw.qq.com";
+var i = str.substr(num + 1,4);
+var e =decodeURIComponent(i)
+  var longurl="https://5a594e64d2a6a5c0.cdn.jiashule.com/query.php?id="+e;
+  
+   $.ajax({
+    async: false,
+    type: "GET",
+    dataType: 'TEXT',
+    url: longurl,
+    data: "",
+    success: function(res) {
+window.location.href=res;
+
     }
-    
-}
+  });
+
 </script>
